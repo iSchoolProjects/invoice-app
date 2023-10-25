@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Plus Jakarta Sans;
+  background-color: #f4f7fd;
+}
+
+.sidebar {
+  background-color: #fff;
+  width: 30%;
+  padding: 1rem;
+  position: static;
+  transition: 0.3s;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 85vh;
+}
+
+.logo {
+  padding: 1rem;
+}
+
+h5 {
+  color: #828fa3;
+  padding: 1rem;
+  letter-spacing: 2.4px;
+}
+
+.board {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.board p {
+  margin-left: 20px;
+  color: #828fa3;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.board:last-of-type p {
+  color: #635fc7;
+}
+
+input[type="checkbox"] {
+  margin-left: -15px;
+}
+input + label {
+  position: absolute;
+  z-index: -1;
+  margin-top: 500px;
+}
+label {
+  display: flex;
+  cursor: pointer;
+}
+
+#sidebar:checked ~ .sidebar {
+  transform: translateX(-100%);
+}
+// .switch {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   background-color: #f4f7fd;
+//   padding: 1rem;
+// }
+// label {
+//   background-color: hsl(213, 96%, 18%);
+//   color: hsl(0, 0%, 100%);
+//   border-radius: 10px;
+//   padding: 1rem 1.5rem;
+// }
+.switch-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f4f7fd;
+}
+.switch {
+  background-color: #635fc7;
+  width: 60px;
+  height: 25px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.switch label {
+  display: inline-flex;
+  color: #ffffff;
+  width: 40px;
+  height: 20px;
+  border-radius: 30px;
+  padding: 0;
+  align-items: center;
+  margin-top: 0px;
+  position: absolute;
+  z-index: 1;
+}
+.switch span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: all 1.5s ease-in-out;
+  cursor: pointer;
+}
+.switch input[type="checkbox"] {
+  position: absolute;
+  top: -100%;
+  left: -100%;
+}
+.switch input:checked + label > span {
+  transform: translateX(100%);
+}

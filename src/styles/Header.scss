@@ -1,0 +1,38 @@
+.rectangle {
+  background-color: #e4ebfa;
+  width: 2px;
+  max-height: 10vh;
+}
+
+.header {
+  width: 70%;
+  background-color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  max-height: 10vh;
+}
+
+h2 {
+  color: #000112;
+  font-weight: 700;
+}
+
+button {
+  border-radius: 30px;
+  padding: 1rem;
+  background-color: #635fc7;
+  border: 0;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  margin-right: 30px;
+}
+
+button:hover {
+  background-color: #635fc71a;
+}
+
+img {
+  cursor: pointer;
+}
