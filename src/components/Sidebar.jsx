@@ -1,23 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 
 export default function Sidebar() {
   const boards = [
-    "Platform Launch",
-    "Marketing Plan",
-    "Roadmap",
-    "+ Create New Board",
+    'Platform Launch',
+    'Marketing Plan',
+    'Roadmap',
+    '+ Create New Board',
   ];
+
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  };
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+    document.body.className = theme;
+  }, [theme]);
   return (
     <>
       <input type="checkbox" name="sidebar" id="sidebar" />
       <label htmlFor="sidebar">
         <img src="/assets/eye-icon.svg" alt="" />
       </label>
-
       <div className="sidebar">
-        <div className="logo">
-          <img src="/assets/logo.svg" alt="" />
-        </div>
         <h5>ALL BOARDS</h5>
         <div className="section">
           <div>
@@ -36,7 +45,7 @@ export default function Sidebar() {
               <div className="switch">
                 <input type="checkbox" id="switch" />
                 <label htmlFor="switch">
-                  <span></span>
+                  <span onClick={toggleTheme}></span>
                 </label>
               </div>
               <img src="/assets/moon.svg" alt="" />
