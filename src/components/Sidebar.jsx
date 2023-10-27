@@ -1,29 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { Logo } from "./icons/Logo";
+import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {sharedSlice} from '../store/slices/shared.slice';
 
 export default function Sidebar() {
-  const boards = [
-    "Platform Launch",
-    "Marketing Plan",
-    "Roadmap",
-    "+ Create New Board",
-  ];
+  const {isDarkTheme, isSidebarHidden} = useSelector((state) => state.shared);
+  const dispatch = useDispatch();
+  const boards = ['Platform Launch', 'Marketing Plan', 'Roadmap', '+ Create New Board'];
 
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
+    localStorage.setItem('isDark', !isDarkTheme);
+    dispatch(sharedSlice.actions.toggleTheme());
   };
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-    document.body.className = theme;
-  }, [theme]);
+  const toggleSidebar = () => {
+    localStorage.setItem('isSidebarHidden', !isSidebarHidden);
+    dispatch(sharedSlice.actions.toggleSidebar());
+  };
+
   return (
     <>
-      <input type="checkbox" name="sidebar" id="sidebar" />
+      <input type="checkbox" name="sidebar" id="sidebar" checked={isSidebarHidden} onChange={toggleSidebar} />
       <label htmlFor="sidebar">
         <img src="/assets/eye-icon.svg" alt="" />
       </label>
@@ -32,24 +27,17 @@ export default function Sidebar() {
         <div className="section">
           <div>
             {boards.map((board) => (
-              <>
-                <div className="board">
-                  <img src="/assets/board-icon.svg" alt="" />
-                  <p>{board}</p>
-                </div>
-              </>
+              <div key={board} className="board">
+                <img src="/assets/board-icon.svg" alt="" />
+                <p>{board}</p>
+              </div>
             ))}
           </div>
           <div>
             <div className="switch-input">
               <img src="/assets/sun.svg" alt="" />
               <div className="switch">
-                <input
-                  type="checkbox"
-                  id="switch"
-                  checked={theme !== "light"}
-                  onChange={toggleTheme}
-                />
+                <input type="checkbox" id="switch" checked={isDarkTheme} onChange={toggleTheme} />
                 <label htmlFor="switch">
                   <span></span>
                 </label>
@@ -67,3 +55,16 @@ export default function Sidebar() {
     </>
   );
 }
+
+/**
+ * 
+krecemo od shared 
+u inicijalne vr shared slice dodati vr is side bar hidden i dodati joj vr false
+napravi u reduceru shared slice 2 f-ije 
+prva f-ija je toggle sidebar koja treba da togluje isSidebarhidden
+druga f-ija setSideBarHidden koja treba da setuje sidebar state na vr koju dobije
+na inicijalno ucitavanje aplikacije procitati vr iz locale st koji se zove isSideBarHidden
+i pozvati f-iju setSideBarHidden i proslediti joj argument iz locale st
+input polje koje kontrolise da li je sidebar sakriven proslediti trenutnu vr iz IsSidebarHidden 
+na inputu imamo changeHandler koji ce pozivati f-iju toggleSideBar i setovati u locale st
+*/

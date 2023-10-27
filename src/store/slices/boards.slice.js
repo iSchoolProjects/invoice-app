@@ -1,4 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   boards: [],
@@ -19,11 +19,11 @@ export const boardsSlice = createSlice({
       return state;
     },
     updateBoard: (state, action) => {
-      state.boards = state.boards.map((board) => (board.id !== action.payload.id ? board : {...board, ...action.payload}));
+      state.boards = state.boards.map((board) => (board.id !== action.payload.id ? board : { ...board, ...action.payload }));
       return state;
     },
     deleteBoarad: (state, action) => {
-      state.boards = state.boards.filter((board) => board.id !== action.payload.id);
+      state.boards = state.boards.filter((board) => board.id !== action.payload);
       return state;
     },
     setCurrentBoard: (state, action) => {
@@ -38,7 +38,7 @@ export const boardsSlice = createSlice({
     },
     updateTask: (state, action) => {
       const currentBoard = state.boards.find((board) => board.id === action.payload.boardId);
-      currentBoard.tasks = currentBoard.tasks.map((task) => (task.id !== action.payload.id ? task : {...task, ...action.payload}));
+      currentBoard.tasks = currentBoard.tasks.map((task) => (task.id !== action.payload.id ? task : { ...task, ...action.payload }));
       state.boards = state.boards.map((board) => (board.id !== action.payload.boardId ? board : currentBoard));
       return state;
     },
