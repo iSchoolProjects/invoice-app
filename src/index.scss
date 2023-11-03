@@ -1,3 +1,7 @@
 @import url("styles/Sidebar.scss");
 @import url("styles/Header.scss");
 
+.layout{
+    display: grid;
+    grid-template-columns: 30% 1fr;
+}

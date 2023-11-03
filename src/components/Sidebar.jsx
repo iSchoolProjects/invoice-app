@@ -1,21 +1,11 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {sharedSlice} from '../store/slices/shared.slice';
+import {useNavigation} from '../hooks/navigation';
+import {useNavigate, useParams} from 'react-router';
 
 export default function Sidebar() {
-  const {isDarkTheme, isSidebarHidden} = useSelector((state) => state.shared);
-  const dispatch = useDispatch();
-  const boards = ['Platform Launch', 'Marketing Plan', 'Roadmap', '+ Create New Board'];
-
-  const toggleTheme = () => {
-    localStorage.setItem('isDark', !isDarkTheme);
-    dispatch(sharedSlice.actions.toggleTheme());
-  };
-  const toggleSidebar = () => {
-    localStorage.setItem('isSidebarHidden', !isSidebarHidden);
-    dispatch(sharedSlice.actions.toggleSidebar());
-  };
-
+  const {boards, toggleTheme, toggleSidebar, handleClick, activeBoard, isDarkTheme, isSidebarHidden} = useNavigation();
+  const navigate = useNavigate();
+  const {id} = useParams();
   return (
     <>
       <input type="checkbox" name="sidebar" id="sidebar" checked={isSidebarHidden} onChange={toggleSidebar} />
@@ -27,11 +17,15 @@ export default function Sidebar() {
         <div className="section">
           <div>
             {boards.map((board) => (
-              <div key={board} className="board">
+              <div key={board} className={`board ${board === id ? 'active' : ''}`} onClick={() => navigate('/dashboard/' + board)}>
                 <img src="/assets/board-icon.svg" alt="" />
                 <p>{board}</p>
               </div>
             ))}
+            <div key={'board'} className="board" onClick={() => navigate('/new-dashboard')}>
+              <img src="/assets/purple-board-icon.svg" alt="" />
+              <p>+ Create New Board</p>
+            </div>
           </div>
           <div>
             <div className="switch-input">
@@ -44,13 +38,12 @@ export default function Sidebar() {
               </div>
               <img src="/assets/moon.svg" alt="" />
             </div>
-
-            <label htmlFor="sidebar">
-              <img src="/assets/eye-slash.svg" alt="" />
-              <h5>Hide Sidebar</h5>
-            </label>
           </div>
         </div>
+        <label htmlFor="sidebar">
+          <img src="/assets/eye-slash.svg" alt="" />
+          <h5>Hide Sidebar</h5>
+        </label>
       </div>
     </>
   );

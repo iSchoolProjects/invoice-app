@@ -4,6 +4,11 @@
   display: flex;
   justify-content: space-between;
   max-height: 30vh;
+  grid-column: 1/-1;
+}
+
+.mobile-logo{
+  display: none;
 }
 
 .header-title{
@@ -41,6 +46,55 @@ button:hover {
   background-color: #635fc71a;
 }
 
+.mobile-btn{
+  display: none;
+}
+
 .dots {
   cursor: pointer;
+}
+
+.arrow{
+  display: none;
+}
+
+
+@media (max-width: 600px) {
+
+  .header{
+    padding: 1rem;
+  }
+
+  .logo{
+    display: none;
+  }
+
+  .mobile-logo{
+    display: block;
+  }
+
+  .header-title{
+    border: 0;
+    width: 100%;
+  }
+
+  .arrow{
+    display: block;
+    transition: all .2s ease-in-out;
+
+    &[data-dropdown-menu=true]{
+      transform: rotate(180deg);
+
+    }
+  }
+
+  button{
+    display: none;
+  }
+
+  .mobile-btn{
+    display: block;
+    margin-right: 20px;
+    cursor: pointer;
+  }
 }
