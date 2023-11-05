@@ -30,6 +30,7 @@ export default function Header(theme) {
           <img data-dropdown-menu={dropdownMenu} className="arrow" src="/assets/arrow-down.svg"></img>
           <div className="btn-section">
             <button
+              className="new-task"
               onClick={() => navigate(`/new-task-dashboard/${id}/column/${columnId}/task`)}
               disabled={!id}
               title={!id ? 'Please choose the board!' : ''}
@@ -37,7 +38,13 @@ export default function Header(theme) {
               + Add New Task
             </button>
             <img className="mobile-btn" src="/assets/mobile-btn.svg"></img>
-            <img className="dots" src="/assets/dots.svg" alt="" />
+            <button
+              className="dots"
+              onClick={() => navigate(`/edit-task-dashboard/${id}/column/${columnId}/task/${taskId}/edit`)}
+              disabled={!id}
+            >
+              <img src="/assets/dots.svg" alt="" />
+            </button>
           </div>
         </div>
       </div>

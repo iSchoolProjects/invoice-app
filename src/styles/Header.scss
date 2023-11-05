@@ -31,7 +31,7 @@ h2 {
   align-items: center;
 }
 
-button {
+.new-task {
   border-radius: 24px;
   padding: 1rem;
   background-color: #635fc7;
@@ -41,6 +41,14 @@ button {
   cursor: pointer;
   margin-right: 30px;
 }
+.dots {
+  background-color: var(--light-theme-border);
+  border: 0;
+}
+.dots:disabled {
+  opacity: 0;
+  cursor: none;
+}
 
 button:hover {
   background-color: #635fc71a;
@@ -48,10 +56,6 @@ button:hover {
 
 .mobile-btn {
   display: none;
-}
-
-.dots {
-  cursor: pointer;
 }
 
 .arrow {
