@@ -7,7 +7,7 @@ export default function Header(theme) {
   const {boards, toggleTheme, isDarkTheme} = useNavigation();
   const navigate = useNavigate();
   const {pathname} = useLocation();
-  const {id} = useParams();
+  const {id, columnId, taskId} = useParams();
   const [dropdownMenu, setDropdownMenu] = useState(false);
 
   const handleDropdown = () => {
@@ -19,21 +19,28 @@ export default function Header(theme) {
   return (
     <>
       <div className="header">
-        <div className="logo">{<Logo text={isDarkTheme ? '#ffffff' : undefined} />}</div>
+        <div className="logo" data-testid="logo">
+          {<Logo text={isDarkTheme ? '#ffffff' : undefined} />}
+        </div>
         <img className="mobile-logo" src="/assets/rectangles-logo.svg"></img>
         <div className="header-title">
           <h2 className="active-board" onClick={handleDropdown}>
-            {id ?? pathname?.split('/').at(0).replace('-', ' ')}
+            {id ?? pathname?.split('/').at(-1).replace('-', ' ')}
           </h2>
           <img data-dropdown-menu={dropdownMenu} className="arrow" src="/assets/arrow-down.svg"></img>
           <div className="btn-section">
-            <button>+ Add New Task</button>
+            <button
+              onClick={() => navigate(`/new-task-dashboard/${id}/column/${columnId}/task`)}
+              disabled={!id}
+              title={!id ? 'Please choose the board!' : ''}
+            >
+              + Add New Task
+            </button>
             <img className="mobile-btn" src="/assets/mobile-btn.svg"></img>
             <img className="dots" src="/assets/dots.svg" alt="" />
           </div>
         </div>
       </div>
-
       {/**mobile */}
       {dropdownMenu && (
         <div className="overlay" onClick={handleClose}>

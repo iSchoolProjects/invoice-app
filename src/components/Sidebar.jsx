@@ -3,7 +3,7 @@ import {useNavigation} from '../hooks/navigation';
 import {useNavigate, useParams} from 'react-router';
 
 export default function Sidebar() {
-  const {boards, toggleTheme, toggleSidebar, handleClick, activeBoard, isDarkTheme, isSidebarHidden} = useNavigation();
+  const {boards, toggleTheme, toggleSidebar, isDarkTheme, isSidebarHidden} = useNavigation();
   const navigate = useNavigate();
   const {id} = useParams();
   return (
