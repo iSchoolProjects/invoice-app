@@ -16,8 +16,8 @@ export default function Boards() {
           <div className="board-card" key={boardIndex}>
             {board?.columns?.map((column, columnIndex) => (
               <div className="task-card" key={columnIndex}>
-                <div className="container">
-                  <h5 className={'background-' + ((+columnIndex + 1) % 5)}></h5>
+                <div className="name">
+                  <h6 className={'background-' + ((+columnIndex + 1) % 5)}></h6>
                   <h3>
                     {column.name.replace('-', ' ').toLocaleUpperCase()}({column.tasks.length})
                   </h3>

@@ -17,11 +17,12 @@
     background-color: hsl(231, 20%, 63%, 0.25);
   }
 
-  .container {
+  .name {
     display: flex;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 0.8rem;
 
-    h5 {
+    h6 {
       width: 15px;
       height: 15px;
       border-radius: 50%;
@@ -111,7 +112,7 @@
     place-content: center;
     width: 280px;
     height: 67vh;
-    margin-top: 90px;
+    margin-top: 50px;
     border-radius: 0.5rem;
     background: #e9effa;
 
