@@ -1,0 +1,16 @@
+@import url('styles/Sidebar.scss');
+@import url('styles/Header.scss');
+
+.layout {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+}
+.rigth {
+  &[data-full-width='true'] {
+    grid-column: 1/-1;
+  }
+}
+:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
