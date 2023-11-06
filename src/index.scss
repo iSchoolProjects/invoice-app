@@ -4,6 +4,8 @@
 @import url('./styles/EditTaskDashboard.scss');
 @import url('./styles/NewDashboard.scss');
 @import url('./styles/DeleteModal.scss');
+@import url('styles/Sidebar.scss');
+@import url('styles/Header.scss');
 
 body {
   margin: 0;
@@ -15,4 +17,18 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+}
+.rigth {
+  &[data-full-width='true'] {
+    grid-column: 1/-1;
+  }
+}
+:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
