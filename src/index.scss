@@ -25,6 +25,7 @@ code {
   grid-template-columns: 30% 1fr;
 }
 .rigth {
+  background: var(--light-grey-light-bg, #f4f7fd);
   &[data-full-width='true'] {
     grid-column: 1/-1;
   }

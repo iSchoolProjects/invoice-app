@@ -22,12 +22,12 @@ export default function Header(theme) {
         <div className="logo" data-testid="logo">
           {<Logo text={isDarkTheme ? '#ffffff' : undefined} />}
         </div>
-        <img className="mobile-logo" src="/assets/rectangles-logo.svg"></img>
+        <img className="mobile-logo" src="/assets/rectangles-logo.svg" alt="Logo"></img>
         <div className="header-title">
           <h2 className="active-board" onClick={handleDropdown}>
             {id ?? pathname?.split('/').at(-1).replace('-', ' ')}
           </h2>
-          <img data-dropdown-menu={dropdownMenu} className="arrow" src="/assets/arrow-down.svg"></img>
+          <img data-dropdown-menu={dropdownMenu} className="arrow" src="/assets/arrow-down.svg" alt="Menu open"></img>
           <div className="btn-section">
             <button
               className="new-task"
@@ -37,7 +37,7 @@ export default function Header(theme) {
             >
               + Add New Task
             </button>
-            <img className="mobile-btn" src="/assets/mobile-btn.svg"></img>
+            <img className="mobile-btn" src="/assets/mobile-btn.svg" alt="Menu closed" />
             <button
               className="dots"
               onClick={() => navigate(`/edit-task-dashboard/${id}/column/${columnId}/task/${taskId}/edit`)}

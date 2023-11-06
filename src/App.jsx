@@ -21,9 +21,9 @@ function App() {
   useEffect(() => {
     const isDark = JSON.parse(localStorage.getItem('isDark'));
     const isSidebarHidden = JSON.parse(localStorage.getItem('isSidebarHidden'));
-    dispatch(sharedSlice.actions.setTheme(isDark));
-    dispatch(sharedSlice.actions.setSidebarHidden(isSidebarHidden));
-  }, []);
+    dispatch(sharedSlice.actions.setTheme(!!isDark));
+    dispatch(sharedSlice.actions.setSidebarHidden(!!isSidebarHidden));
+  }, [dispatch]);
 
   return (
     <Routes>
