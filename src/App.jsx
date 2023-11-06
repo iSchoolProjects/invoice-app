@@ -1,6 +1,11 @@
-import React from 'react';
 import {Route, Routes, useNavigate} from 'react-router';
 import Boards from './components/Boards';
+import React, {useEffect} from 'react';
+
+import {useDispatch} from 'react-redux';
+import {sharedSlice} from './store/slices/shared.slice';
+import Layout from './components/Layout';
+
 // import Home from './components/Home';
 // import NewDashboard from './components/NewDashboard';
 // import Dashboard from './components/Dashboard';
@@ -12,9 +17,17 @@ import Boards from './components/Boards';
 // import EditTaskDashboard from './components/EditTaskDashboard';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const isDark = JSON.parse(localStorage.getItem('isDark'));
+    const isSidebarHidden = JSON.parse(localStorage.getItem('isSidebarHidden'));
+    dispatch(sharedSlice.actions.setTheme(isDark));
+    dispatch(sharedSlice.actions.setSidebarHidden(isSidebarHidden));
+  }, []);
+
   return (
     <Routes>
-      <Route path="/" element={<h1>Home</h1>} />
+      <Route path="/" element={<Layout />} />
       <Route path="/new-dashboard" element={<h1>NewDashboard</h1>} />
       <Route path="/dashboard/:id" element={<Boards />} />
       <Route path="/edit-dashboard/:id" element={<h1>EditDashboard</h1>} />
@@ -28,13 +41,3 @@ function App() {
 }
 
 export default App;
-
-// Homepage /
-// New Dashboard /dashboard
-// Dashboard /dashboard/:id
-// Edit Dashboard /dashboard/:id/edit
-// Column /dashboard/:id/column
-// Column /dashboard/:id/column/:id/edit
-// Task /dashboard/:id/column/:id/task/:id
-// New Task dashboard/:id/column/:id/task/
-// Edit Task dashboard/:id/column/:id/task/:id/edit

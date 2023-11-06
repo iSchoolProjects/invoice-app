@@ -22,8 +22,8 @@ export const boardsSlice = createSlice({
       state.boards = state.boards.map((board) => (board.id !== action.payload.id ? board : {...board, ...action.payload}));
       return state;
     },
-    deleteBoarad: (state, action) => {
-      state.boards = state.boards.filter((board) => board.id !== action.payload.id);
+    deleteBoard: (state, action) => {
+      state.boards = state.boards.filter((board) => board.id !== action.payload);
       return state;
     },
     setCurrentBoard: (state, action) => {
