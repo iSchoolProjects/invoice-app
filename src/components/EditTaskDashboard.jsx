@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
-export default function EditTaskModal() {
+export default function EditTaskDashboard() {
   const [state, setState] = useState({
     title: '',
     description: '',
@@ -15,35 +15,41 @@ export default function EditTaskModal() {
   });
 
   const handleChange = (e) => {
-    setState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setState((prev) => ({...prev, [e.target.name]: e.target.value}));
   };
 
   const handleSubtaskChange = (e, index) => {
     const updatedSubtasks = [...state.subtasks];
     updatedSubtasks[index].title = e.target.value;
-    setState((prev) => ({ ...prev, subtasks: updatedSubtasks }));
+    setState((prev) => ({...prev, subtasks: updatedSubtasks}));
   };
 
   const handleSubmit = () => {
     if (!state.subtasks.some((subtask) => subtask.title)) {
-      setState((prev) => ({ ...prev, error: true }));
+      setState((prev) => ({...prev, error: true}));
     } else {
-      setState((prev) => ({ ...prev, error: false }));
+      setState((prev) => ({...prev, error: false}));
     }
   };
 
   const addNewSubtask = () => {
     setState((prev) => ({
       ...prev,
-      subtasks: [...prev.subtasks, { title: '', isCompleted: false }],
+      subtasks: [...prev.subtasks, {title: '', isCompleted: false}],
     }));
   };
 
   const removeSubtask = (index) => {
     const updatedSubtasks = [...state.subtasks];
     updatedSubtasks.splice(index, 1);
-    setState((prev) => ({ ...prev, subtasks: updatedSubtasks }));
+    setState((prev) => ({...prev, subtasks: updatedSubtasks}));
   };
+
+  const options = [
+    {value: 'doing', label: 'Doing'},
+    {value: 'todo', label: 'Todo'},
+    {value: 'done', label: 'Done'},
+  ];
 
   return (
     <>
@@ -52,14 +58,7 @@ export default function EditTaskModal() {
           <h5>Edit Task</h5>
           <div className="text-input-field">
             <label htmlFor="title"> Title</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              placeholder="e.g. Take coffee break"
-              value={state.title}
-              onChange={handleChange}
-            />
+            <input type="text" id="title" name="title" placeholder="e.g. Take coffee break" value={state.title} onChange={handleChange} />
           </div>
           <div className="text-input-field">
             <label htmlFor="description"> Description</label>
@@ -83,22 +82,12 @@ export default function EditTaskModal() {
                   placeholder="e.g. Make coffee"
                   value={subtask.title}
                   onChange={(e) => handleSubtaskChange(e, index)}
-                  className={`${
-                    state.error && !subtask.title ? 'border-red' : ''
-                  }`}
+                  className={`${state.error && !subtask.title ? 'border-red' : ''}`}
                 />
                 {`${state.error && !subtask.title ? 'img-red' : ''}` ? (
-                  <img
-                    src="./assets/remove-icon-red.svg"
-                    alt=""
-                    onClick={() => removeSubtask(index)}
-                  />
+                  <img src="/assets/remove-icon-red.svg" alt="" onClick={() => removeSubtask(index)} />
                 ) : (
-                  <img
-                    src="./assets/remove-icon.svg"
-                    alt=""
-                    onClick={() => removeSubtask(index)}
-                  />
+                  <img src="/assets/remove-icon.svg" alt="" onClick={() => removeSubtask(index)} />
                 )}
 
                 {state.error && !subtask.title && <span>Can't be empty</span>}
@@ -107,13 +96,12 @@ export default function EditTaskModal() {
             <button onClick={addNewSubtask}>+ Add New Subtask</button>
           </div>
           <p>Status</p>
-          <select
-            name="status"
-            id="status"
-            value={state.status}
-            onChange={handleChange}
-          >
-            <option value={state.status}>{state.status}</option>
+          <select name="status" id="doing" onChange={handleChange}>
+            {options.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
           <button onClick={handleSubmit}>Save Changes</button>
         </div>
