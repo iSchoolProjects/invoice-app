@@ -10,11 +10,11 @@
 
   ::-webkit-scrollbar {
     background-color: hsl(231, 20%, 63%, 0.1);
-    height: 5px;
+    height: 8px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: hsl(231, 20%, 63%, 0.25);
+    background-color: hsl(231, 20%, 63%, 0.45);
   }
 
   .name {
@@ -56,10 +56,6 @@
       align-items: center;
       gap: 0.5rem;
     }
-  }
-
-  .boards {
-    width: 1260px;
   }
 
   .board-card {
@@ -112,7 +108,7 @@
     place-content: center;
     width: 280px;
     height: 67vh;
-    margin-top: 50px;
+    margin-top: 55px;
     border-radius: 0.5rem;
     background: #e9effa;
 
@@ -120,6 +116,11 @@
       font-weight: 700;
       font-size: 24px;
       color: #828fa3;
+      cursor: pointer;
+    }
+
+    h4:hover {
+      color: #635fc7;
     }
   }
 }
