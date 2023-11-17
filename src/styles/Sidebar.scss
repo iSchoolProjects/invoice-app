@@ -13,11 +13,14 @@
   --light-theme-body: #e4ebfa;
   --dark-theme-body: #20212c;
   --light-theme-heading: #000112;
+  --light-theme-column: #e9effa;
+
   --dark-theme-heading: #ffffff;
   --light-theme-toggler: #f4f7fd;
   --dark-theme-toggler: #20212c;
   --light-theme-border: #e4ebfa;
   --dark-theme-border: #3e3f4e;
+  --dark-theme-column: #2b2c37;
 }
 
 body {
@@ -31,6 +34,7 @@ body:has(#switch:checked) {
   --light-theme-heading: var(--dark-theme-heading);
   --light-theme-toggler: var(--dark-theme-toggler);
   --light-theme-border: var(--dark-theme-border);
+  --light-theme-column: var(--dark-theme-column);
 }
 
 .sidebar {

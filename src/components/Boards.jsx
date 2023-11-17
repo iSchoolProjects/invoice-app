@@ -5,8 +5,8 @@ import {data} from '../data';
 export default function Boards() {
   const navigate = useNavigate();
 
-  const handleNavigation = () => {
-    navigate('/dashboard/:id/column/:columnId/task/:taskId');
+  const handleTask = (board, column, task) => {
+    navigate(`/dashboard/${board}/column/${column}/task/${task}`);
   };
 
   return (
@@ -23,7 +23,7 @@ export default function Boards() {
                   </h3>
                 </div>
                 {column?.tasks?.map((task, taskIndex) => (
-                  <div key={taskIndex} onClick={handleNavigation} className="card-text">
+                  <div key={taskIndex} onClick={() => handleTask(boardIndex, columnIndex, taskIndex)} className="card-text">
                     <h2>{task.title}</h2>
                     <p>{`${task.subtasks.filter((subtask) => subtask.isCompleted).length} of ${task.subtasks.length} subtasks`}</p>
                   </div>

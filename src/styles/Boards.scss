@@ -6,7 +6,7 @@
   grid-auto-flow: column;
   overflow-x: auto;
   padding: 2rem;
-  background-color: #f4f7fd;
+  background-color: var(--light-theme-toggler);
 
   ::-webkit-scrollbar {
     background-color: hsl(231, 20%, 63%, 0.1);
@@ -59,8 +59,8 @@
   }
 
   .board-card {
-    display: flex;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -85,20 +85,20 @@
     gap: 0.5rem;
     padding: 1.5rem 1rem;
     border-radius: 0.5rem;
-    background-color: #ffffff;
+    background: var(--light-theme);
 
     h2 {
+      margin: 0;
       width: 265px;
       font-weight: 700;
       font-size: 17px;
-      margin: 0;
-      color: #000112;
+      color: var(--light-theme-heading);
     }
 
     p {
+      margin: 0;
       font-weight: 500;
       font-size: 14px;
-      margin: 0;
       color: #828fa3;
     }
   }
@@ -110,7 +110,7 @@
     height: 67vh;
     margin-top: 55px;
     border-radius: 0.5rem;
-    background: #e9effa;
+    background: var(--light-theme-column);
 
     h4 {
       font-weight: 700;
@@ -130,7 +130,7 @@
     padding: 0;
 
     .new-column {
-      height: 84vh;
+      height: 83vh;
     }
   }
 }
@@ -140,7 +140,7 @@
     padding: 0;
 
     .new-column {
-      height: 102vh;
+      height: 100vh;
     }
   }
 }
